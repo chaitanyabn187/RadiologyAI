@@ -1,4 +1,4 @@
-RadiologyAI — AI-Assisted Radiology Case Prioritization System
+🩻 RadiologyAI — AI-Assisted Radiology Case Prioritization System
 
 "Python" (https://img.shields.io/badge/Python-3.x-blue)
 "Flask" (https://img.shields.io/badge/Framework-Flask-black)
@@ -13,7 +13,7 @@ The system uses a pretrained deep-learning model to generate experimental chest 
 
 The project combines Python web development, deep learning, image processing, and database management in a single application.
 
-Disclaimer: This project is intended for educational and demonstration purposes only. Its AI outputs are not confirmed diagnoses and must not be used for clinical decision-making.»
+«Disclaimer: This project is intended for educational and demonstration purposes only. Its AI outputs are not confirmed diagnoses and must not be used for clinical decision-making.»
 
 ---
 
