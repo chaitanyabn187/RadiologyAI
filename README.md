@@ -1,4 +1,4 @@
-🩻 RadiologyAI — AI-Assisted Radiology Case Prioritization System
+ RadiologyAI — AI-Assisted Radiology Case Prioritization System
 
 "Python" (https://img.shields.io/badge/Python-3.x-blue)
 "Flask" (https://img.shields.io/badge/Framework-Flask-black)
