@@ -5,7 +5,7 @@
 "AI" (https://img.shields.io/badge/AI-Chest%20X--ray%20Analysis-purple)
 "Status" (https://img.shields.io/badge/Status-Academic%20Prototype-orange)
 
-📌 Project Overview
+ Project Overview
 
 RadiologyAI is an academic prototype that demonstrates how artificial intelligence can assist with organizing chest X-ray cases for review.
 
@@ -13,17 +13,17 @@ The system uses a pretrained deep-learning model to generate experimental chest 
 
 The project combines Python web development, deep learning, image processing, and database management in a single application.
 
-«Disclaimer: This project is intended for educational and demonstration purposes only. Its AI outputs are not confirmed diagnoses and must not be used for clinical decision-making.»
+Disclaimer: This project is intended for educational and demonstration purposes only. Its AI outputs are not confirmed diagnoses and must not be used for clinical decision-making.»
 
 ---
 
-🎯 Problem Statement
+Problem Statement
 
 Medical imaging departments may receive many X-ray cases that need professional review. Organizing case information and reviewing images can be challenging when information is stored across different records.
 
 This project explores a software-based approach to organizing chest X-ray cases and presenting experimental AI outputs in a centralized dashboard.
 
-🎯 Objectives
+Objectives
 
 - Develop a web application for managing chest X-ray cases.
 - Integrate a pretrained deep-learning model for experimental image analysis.
@@ -35,43 +35,43 @@ This project explores a software-based approach to organizing chest X-ray cases 
 
 ---
 
-✨ Key Features
+Key Features
 
-🩻 Chest X-ray Upload
+Chest X-ray Upload
 
 Upload supported chest X-ray images in PNG, JPG, and JPEG formats.
 
-🤖 AI-Assisted Analysis
+AI-Assisted Analysis
 
 Use a pretrained deep-learning model to generate experimental findings from chest X-ray images.
 
-📊 Interactive Case Dashboard
+Interactive Case Dashboard
 
 View case IDs, patient details, review rankings, uploaded images, and AI-generated findings.
 
-🔢 Review Ranking
+Review Ranking
 
 Organize cases according to the highest returned model score. This ranking is experimental and does not establish clinical urgency.
 
-🔍 Duplicate Image Detection
+Duplicate Image Detection
 
 Use SHA-256 hashing to identify identical image files and help prevent duplicate uploads.
 
-🗂️ Case Management
+Case Management
 
 Add and delete cases through the web interface.
 
-💾 Database Integration
+Database Integration
 
 Store case details and model outputs using SQLite.
 
-📍 Finding Location Field
+Finding Location Field
 
 Display the location field when available. The current implementation shows "Not localized" when an anatomical location has not been determined.
 
 ---
 
-🛠️ Technologies Used
+Technologies Used
 
 Technology| Purpose
 Python| Application logic
@@ -88,7 +88,7 @@ GitHub| Source code hosting
 
 ---
 
-🏗️ Project Structure
+Project Structure
 
 Radiology_case_prioritization/
 │
@@ -115,7 +115,7 @@ The exact files and folders may vary depending on the current version of the pro
 
 ---
 
-⚙️ Installation and Setup
+Installation and Setup
 
 Prerequisites
 
@@ -176,7 +176,7 @@ The application uses a local SQLite database for case storage.
 
 ---
 
-🔄 How the System Works
+How the System Works
 
 1. The user opens the web application.
 2. The user enters case details and selects a chest X-ray image.
@@ -189,7 +189,7 @@ The application uses a local SQLite database for case storage.
 
 ---
 
-🧠 AI Model Information
+AI Model Information
 
 The current implementation uses a pretrained DenseNet121 model through TorchXRayVision.
 
@@ -207,7 +207,7 @@ All outputs require appropriate professional interpretation and must not be used
 
 ---
 
-🔐 Privacy and Security
+Privacy and Security
 
 This project handles medical-image-related data, so privacy must be considered.
 
@@ -219,7 +219,7 @@ This project handles medical-image-related data, so privacy must be considered.
 
 ---
 
-⚠️ Limitations
+Limitations
 
 - The system is an academic prototype and has not been clinically validated.
 - AI-generated findings may be inaccurate or incomplete.
@@ -231,7 +231,7 @@ This project handles medical-image-related data, so privacy must be considered.
 
 ---
 
-🚀 Future Enhancements
+Future Enhancements
 
 Potential future improvements include:
 
@@ -248,7 +248,7 @@ These are proposed enhancements and should not be considered implemented feature
 
 ---
 
-🎓 Project Purpose
+Project Purpose
 
 RadiologyAI is an educational engineering project exploring the integration of deep learning, web development, and medical-image workflow organization.
 
@@ -256,7 +256,7 @@ It provides practical experience with Python, Flask, pretrained AI models, image
 
 ---
 
-📄 Disclaimer
+Disclaimer
 
 RadiologyAI is provided for educational and demonstration purposes only.
 
