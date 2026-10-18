@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RadiologyAI | Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 22px 30px;
+        }
+
+        header h1 {
+            font-size: 27px;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 25px auto;
+            padding: 0 20px;
+        }
+
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .top-section h2 {
+            font-size: 24px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid #2563eb;
+        }
+
+        .summary-card h3 {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .summary-card p {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .notice {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+            padding: 13px 16px;
+            border-radius: 7px;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            overflow-x: auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        table {
+            width: 100%;
+            min-width: 1400px;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #1e293b;
+            color: white;
+        }
+
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .case-id {
+            font-weight: bold;
+            color: #2563eb;
+            white-space: nowrap;
+        }
+
+        .rank {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 6px 11px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .location {
+            min-width: 130px;
+            color: #64748b;
+        }
+
+        .xray-image {
+            display: block;
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            background: #0f172a;
+            border-radius: 7px;
+            margin-bottom: 10px;
+        }
+
+        .no-image {
+            width: 140px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e2e8f0;
+            color: #64748b;
+            border-radius: 7px;
+            margin-bottom: 10px;
+        }
+
+        .finding-box {
+            min-width: 240px;
+            max-width: 320px;
+        }
+
+        .finding-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .finding-item {
+            padding: 8px;
+            margin-bottom: 7px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            background: #f8fafc;
+        }
+
+        .finding-name {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        .finding-score {
+            color: #475569;
+            font-size: 12px;
+        }
+
+        .score-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: #2563eb;
+            border-radius: 5px;
+        }
+
+        .pending {
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 45px 20px;
+            color: #64748b;
+        }
+
+        .empty-state h3 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            padding: 25px 15px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .top-section h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>RadiologyAI</h1>
+    <p>AI-Assisted Radiology Case Prioritization System</p>
+</header>
+
+<div class="container">
+
+    <div class="top-section">
+        <div>
+            <h2>Case Dashboard</h2>
+            <p style="color: #64748b; margin-top: 6px;">
+                View and manage uploaded chest X-ray cases.
+            </p>
+        </div>
+
+        <div class="actions">
+            <a href="{{ url_for('upload') }}" class="btn btn-primary">
+                + Add New Case
+            </a>
+
+            {% if patients %}
+            <form action="{{ url_for('clear_cases') }}"
+                  method="POST"
+                  onsubmit="return confirm('Are you sure you want to delete ALL cases? This cannot be undone.');">
+
+                <button type="submit" class="btn btn-danger">
+                    Clear All Cases
+                </button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="summary">
+
+        <div class="summary-card">
+            <h3>Total Cases</h3>
+            <p>{{ patients|length }}</p>
+        </div>
+
+        <div class="summary-card">
+            <h3>Chest X-ray Cases</h3>
+            <p>{{ patients|length }}</p>
+        </div>
+
+        <div class="summary-card">
+            <h3>Cases with AI Findings</h3>
+            <p>
+                {{ patients|selectattr('ai_findings')|list|length }}
+            </p>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        <strong>Important:</strong>
+        This is an academic prototype. AI findings and scores are experimental
+        model outputs, not confirmed diagnoses or calibrated disease
+        probabilities. Priority numbers indicate the system's current review
+        ranking, not validated medical urgency. Professional medical
+        interpretation is required. Exact anatomical locations are not
+        currently identified by this model.
+    </div>
+
+    <div class="table-container">
+
+        {% if patients %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>Case ID</th>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Priority</th>
+                    <th>Location of Diagnosis</th>
+                    <th>AI Finding with Image</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for patient in patients %}
+
+                <tr>
+
+                    <!-- Serial Number -->
+                    <td>{{ loop.index }}</td>
+
+                    <!-- Case ID -->
+                    <td class="case-id">
+                        CASE-{{ "%03d"|format(patient['id']) }}
+                    </td>
+
+                    <!-- Patient Name -->
+                    <td>{{ patient['patient_name'] }}</td>
+
+                    <!-- Age -->
+                    <td>{{ patient['age'] }}</td>
+
+                    <!-- Gender -->
+                    <td>{{ patient['gender'] or 'Not specified' }}</td>
+
+                    <!-- Review Rank -->
+                    <td>
+                        <span class="rank">
+                            {{ patient['review_rank'] }}
+                        </span>
+                    </td>
+
+                    <!-- Location -->
+                    <td class="location">
+                        {{ patient.get('diagnosis_location') or 'Not localized' }}
+                    </td>
+
+                    <!-- X-ray Image and AI Findings -->
+                    <td>
+                        <div class="finding-box">
+
+                            {% if patient['image_filename'] %}
+
+                                <img
+                                    class="xray-image"
+                                    src="{{ url_for('uploaded_file', filename=patient['image_filename']) }}"
+                                    alt="Chest X-ray for {{ patient['patient_name'] }}"
+                                    loading="lazy"
+                                    onerror="this.style.display='none';"
+                                >
+
+                            {% else %}
+
+                                <div class="no-image">
+                                    No image available
+                                </div>
+
+                            {% endif %}
+
+                            <div class="finding-title">
+                                AI Findings
+                            </div>
+
+                            {% if patient['ai_findings'] %}
+
+                                {% for finding in patient['ai_findings'][:5] %}
+
+                                    <div class="finding-item">
+
+                                        <span class="finding-name">
+                                            {{ finding['name'] }}
+                                        </span>
+
+                                        <span class="finding-score">
+                                            Model score:
+                                            {{ "%.4f"|format(finding['score']) }}
+                                        </span>
+
+                                        {% set score_percent =
+                                            [[finding['score']|float, 0]|max, 1]|min * 100
+                                        %}
+
+                                        <div class="score-bar">
+                                            <div class="score-fill"
+                                                 style="width: {{ score_percent }}%;">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                {% endfor %}
+
+                                <small style="color: #64748b;">
+                                    Showing up to 5 highest-scoring model outputs.
+                                </small>
+
+                            {% else %}
+
+                                <span class="pending">
+                                    AI findings unavailable
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+                    </td>
+
+                    <!-- Delete Button -->
+                    <td>
+                        <form
+                            action="{{ url_for('delete_case', case_id=patient['id']) }}"
+                            method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this case?');">
+
+                            <button type="submit" class="delete-btn">
+                                Delete
+                            </button>
+
+                        </form>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <div class="empty-state">
+            <h3>No Cases Available</h3>
+            <p>Upload a chest X-ray to add your first case.</p>
+
+            <br>
+
+            <a href="{{ url_for('upload') }}" class="btn btn-primary">
+                Upload New Case
+            </a>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<footer>
+    RadiologyAI | Academic Project Prototype
+    <br><br>
+    AI outputs are experimental and must not be used as a substitute
+    for professional medical interpretation.
+</footer>
+
+</body>
+</html>

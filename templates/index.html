@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RadiologyAI | Home</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+</head><body><header class="navbar"><a href="{{ url_for('home') }}" class="logo">
+    Radiology<span>AI</span>
+</a>
+
+<nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="#about">About</a>
+    <a href="#workflow">How It Works</a>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+</nav>
+
+</header><main><!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-layout">
+
+        <!-- LEFT SIDE: X-RAY IMAGE -->
+        <div class="hero-image">
+            <img
+                src="{{ url_for('static', filename='images/chest-xray.jpg') }}"
+                alt="Sample chest X-ray for academic demonstration">
+        </div>
+
+        <!-- RIGHT SIDE: EXISTING TEXT AND BUTTONS -->
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                AI-ASSISTED MEDICAL IMAGING
+            </p>
+
+            <h1>
+                Smarter Imaging.<br>
+                Organized Reviews.
+            </h1>
+
+            <p class="hero-description">
+                An academic project exploring how AI-assisted tools
+                could help organize medical imaging cases for review
+                by qualified healthcare professionals.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('upload') }}"
+                   class="button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Upload X-ray →
+                </a>
+
+                <a href="#workflow" class="button secondary">
+                    Explore Workflow
+                </a>
+
+            </div>
+
+            <p class="notice">
+                Academic demonstration only — not intended for
+                clinical diagnosis.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="content-section">
+
+    <p class="eyebrow">ABOUT THE PROJECT</p>
+
+    <h2>Making Imaging Workflows Easier to Explore</h2>
+
+    <p>
+        RadiologyAI is an academic mini-project that demonstrates
+        an interface for uploading and previewing medical images.
+        AI-based analysis and clinical prioritization are not yet
+        validated.
+    </p>
+
+</section>
+
+<!-- WORKFLOW SECTION -->
+<section id="workflow" class="content-section">
+
+    <p class="eyebrow">HOW IT WORKS</p>
+
+    <h2>Simple Workflow</h2>
+
+    <div class="card-container">
+
+        <article class="card">
+            <span class="step-number">01</span>
+            <h3>Upload Image</h3>
+            <p>
+                Select an authorized, de-identified sample X-ray image.
+            </p>
+        </article>
+
+        <article class="card">
+            <span class="step-number">02</span>
+            <h3>Preview Image</h3>
+            <p>
+                Review the selected image in the upload workspace.
+            </p>
+        </article>
+
+        <article class="card">
+            <span class="step-number">03</span>
+            <h3>Future AI Integration</h3>
+            <p>
+                AI analysis may be added and evaluated in a future phase.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+</main><footer>
+     RadiologyAI 
+</footer></body>
+</html>

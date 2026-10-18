@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Secrets
+.env
+
+# Database and patient records
+radiology.db
+*.db
+
+# Uploaded X-ray images
+static/uploads/*
+!static/uploads/.gitkeep
+
+# IDE files
+.vscode/
+.idea/
